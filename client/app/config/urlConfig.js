@@ -1,0 +1,1 @@
+const backendUrl = 'localhost:8000'
