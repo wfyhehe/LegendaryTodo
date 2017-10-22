@@ -1,6 +1,12 @@
 import React from 'react'
 import {Form, Icon, Input, Button, Checkbox} from 'antd'
 import {Link} from 'react-router-dom'
+import {backendUrl} from '../../config/urlConfig';
+import {message} from 'antd';
+import {TOKEN} from '../../constants/localStorage';
+import local from '../../utils/localStore';
+// import axios from '../../axios/index'
+import axios from '../../axios/index'
 
 const FormItem = Form.Item
 
@@ -9,7 +15,26 @@ class SignUpForm extends React.Component {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values)
+        const url = `${backendUrl}/users/`
+        axios.post(url, JSON.stringify({ // 验证用户名密码
+          username: values.username,
+          email: values.email,
+          password: values.password
+        }), {
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+          }
+        }).then(response => {
+          local.setItem(TOKEN, response.data.token)
+        }).catch(error => {
+          console.log(error.response)
+          if (error.response.status === 400) {
+            const data = error.response.data
+            for (let key in data) {
+              message.error(`${key}错误: ${data[key]}`)
+            }
+          }
+        })
       }
     })
   }

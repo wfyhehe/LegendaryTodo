@@ -13,8 +13,8 @@ from todo.serializers import TodoSerializer
 
 
 class TodoViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
-    authentication_classes = (JSONWebTokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
+    # authentication_classes = (JSONWebTokenAuthentication,)
+    # permission_classes = (IsAuthenticated,)
 
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer

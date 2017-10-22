@@ -5,44 +5,44 @@ import TodoItem from '../TodoItem/index'
 import {backendUrl} from '../../config/urlConfig'
 import local from '../../utils/localStore'
 import {TOKEN} from '../../constants/localStorage'
+import axios from '../../axios/index'
 
 @inject('todoStore') @inject('viewStore') @observer
 class List extends React.Component {
 
   test = () => {
-    const url = `${backendUrl}/jwt-auth/`
-    fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        username: 'admin',
-        password: 'admin123'
-      }),
+    const url = `${backendUrl}/sign-in/`
+    axios.post(url, JSON.stringify({ // 验证用户名密码
+      username: 'admin',
+      password: 'admin123'
+    }), {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json;charset=UTF-8'
       }
-    }).then((response) => {
-      console.log(response) //=> number 100–599
-      return response.json()
-    }, (error) => {
-    }).then((json) => {
-      console.log(json)
-      local.setItem(TOKEN, json.token)
+    }).then(response => {
+      console.log(response)
+      if (response.status >= 200 && response.status < 300) {
+        local.setItem(TOKEN, response.data.token)
+      }
+    }).catch(err => {
+      console.log(err)
     })
   }
   test2 = () => {
     const url = `${backendUrl}/todo/`
-    fetch(url, {
-      method: 'GET',
+    axios.get(url, {
+      params: {}
+    }, {
       headers: {
-        'Content-type': 'application/json',
-        'Authorization': ` JWT ${local.getItem(TOKEN)}`
+        'Content-Type': 'application/json;charset=UTF-8'
       }
-    }).then((response) => {
-      console.log(response) //=> number 100–599
-      return response.json()
-    }, (error) => {
-    }).then((json) => {
-      console.log(json)
+    }).then(response => {
+      console.log(response)
+      if (response.status >= 200 && response.status < 300) {
+        console.log(response.data)
+      }
+    }).catch(err => {
+      console.log(err)
     })
   }
 

@@ -123,7 +123,7 @@ module.exports = {
     "comma-spacing": 2,
     "comma-style": 2,
     "complexity": [0, 11],
-    "consistent-return": 2,
+    "consistent-return": 0,
     "consistent-this": [0, "that"],
     "curly": [2, "multi-line"],
     "default-case": 0,

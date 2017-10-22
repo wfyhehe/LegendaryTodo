@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import {backendUrl} from '../../config/urlConfig'
 import local from '../../utils/localStore'
 import {TOKEN} from '../../constants/localStorage'
+import {message} from 'antd'
 
 const FormItem = Form.Item;
 
@@ -24,12 +25,19 @@ class SignInForm extends React.Component {
             'Content-Type': 'application/json'
           }
         }).then((response) => {
-          console.log(response) //=> number 100–599
-          return response.json()
+          console.log(response)
+          if (response.status >= 200 && response.status < 300) {
+            message.success('登录成功!')
+            return response.json()
+          } else {
+            message.error('登录失败!')
+            return null
+          }
         }, (error) => {
+          console.log(error)
         }).then((json) => {
-          console.log(json)
           local.setItem(TOKEN, json.token)
+          this.props.history.push('/')
         })
       }
     })

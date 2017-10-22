@@ -1,10 +1,14 @@
 # coding=utf-8
 from __future__ import unicode_literals
 from datetime import datetime
+
 from django.db import models
 
 
 # Create your models here.
+from users.models import MyUser
+
+
 class Todo(models.Model):
     URGENCY_DEGREE = (
         (1, "不紧急"),
@@ -14,7 +18,7 @@ class Todo(models.Model):
     )
 
     id = models.CharField(max_length=32, primary_key=True, verbose_name='id')
-    # user = models.ForeignKey()
+    user = models.ForeignKey(MyUser)
     title = models.TextField(verbose_name='标题')
     completed = models.BooleanField(verbose_name='是否完成')
     urgency = models.IntegerField(choices=URGENCY_DEGREE, verbose_name='紧急程度')

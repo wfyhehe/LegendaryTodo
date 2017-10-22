@@ -21,10 +21,12 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 from LegendaryTodo.settings import MEDIA_ROOT
 from todo.views import TodoViewSet
+from users.views import UserViewSet
 
 router = DefaultRouter()
 
 router.register(r'todo', TodoViewSet, base_name='todo')
+router.register(r'users', UserViewSet, base_name='users')
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),

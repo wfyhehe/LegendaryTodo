@@ -14,6 +14,8 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import sys
 
+import datetime
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE_DIR)
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
@@ -27,6 +29,7 @@ SECRET_KEY = '$0jzrpbn5ka(#$@9@oi=3^3739swfk$eshqr7vk@x^tdngn&me'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '*'
     '.flyingwang.com',
     '.flyingwang.com.',
     'localhost',
@@ -56,7 +59,8 @@ INSTALLED_APPS = (
     'django_filters',
     'corsheaders',
     'rest_framework.authtoken',
-    'todo'
+    'todo',
+    'users'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -107,6 +111,11 @@ DATABASES = {
     }
 }
 
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=30),
+    'JWT_AUTH_HEADER_PREFIX': 'Token',
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -125,7 +134,7 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-
+AUTH_USER_MODEL = 'users.MyUser'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
@@ -138,13 +147,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': {'django_filters.rest_framework.DjangoFilterBackend'},
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': {
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BaseAuthentication',
-    }
+    # 'DEFAULT_FILTER_BACKENDS': {'django_filters.rest_framework.DjangoFilterBackend'},
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BaseAuthentication',
+    )
 }
