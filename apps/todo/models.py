@@ -13,9 +13,9 @@ class Todo(models.Model):
         (4, "十万火急"),
     )
 
-    id = models.CharField(primary_key=True, verbose_name='id')
-    user = models.ForeignKey()
-    title = models.CharField(verbose_name='标题')
+    id = models.CharField(max_length=32, primary_key=True, verbose_name='id')
+    # user = models.ForeignKey()
+    title = models.TextField(verbose_name='标题')
     completed = models.BooleanField(verbose_name='是否完成')
     urgency = models.IntegerField(choices=URGENCY_DEGREE, verbose_name='紧急程度')
     expire_datetime = models.DateTimeField(verbose_name='过期时间')

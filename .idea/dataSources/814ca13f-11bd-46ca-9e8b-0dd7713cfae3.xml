@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-10-21.15:42:41.809</IntrospectionTimestamp>
-      <IntrospectionStateNumber>579</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-10-21.22:11:51.574</IntrospectionTimestamp>
+      <IntrospectionStateNumber>599</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -109,634 +109,689 @@
       <ObjectId>16561</ObjectId>
       <StateNumber>579</StateNumber>
     </table>
-    <column id="29" parent="18" name="id">
+    <table id="29" parent="3" name="todo_todo">
+      <ObjectId>16571</ObjectId>
+      <StateNumber>599</StateNumber>
+    </table>
+    <column id="30" parent="18" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
       <DefaultExpression>nextval(&apos;auth_group_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="30" parent="18" name="name">
+    <column id="31" parent="18" name="name">
       <Position>2</Position>
       <DataType>varchar(80)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <index id="31" parent="18" name="auth_group_pkey">
+    <index id="32" parent="18" name="auth_group_pkey">
       <ObjectId>16431</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="32" parent="18" name="auth_group_name_key">
+    <index id="33" parent="18" name="auth_group_name_key">
       <ObjectId>16433</ObjectId>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="33" parent="18" name="auth_group_name_331666e8_like">
+    <index id="34" parent="18" name="auth_group_name_331666e8_like">
       <ObjectId>16481</ObjectId>
       <ColNames>name</ColNames>
     </index>
-    <key id="34" parent="18" name="auth_group_pkey">
+    <key id="35" parent="18" name="auth_group_pkey">
       <ObjectId>16432</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>auth_group_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="35" parent="18" name="auth_group_name_key">
+    <key id="36" parent="18" name="auth_group_name_key">
       <ObjectId>16434</ObjectId>
       <ColNames>name</ColNames>
       <UnderlyingIndexName>auth_group_name_key</UnderlyingIndexName>
     </key>
-    <column id="36" parent="19" name="id">
+    <column id="37" parent="19" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
       <DefaultExpression>nextval(&apos;auth_group_permissions_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="37" parent="19" name="group_id">
+    <column id="38" parent="19" name="group_id">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <column id="38" parent="19" name="permission_id">
+    <column id="39" parent="19" name="permission_id">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <index id="39" parent="19" name="auth_group_permissions_pkey">
+    <index id="40" parent="19" name="auth_group_permissions_pkey">
       <ObjectId>16441</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="40" parent="19" name="auth_group_permissions_group_id_permission_id_key">
+    <index id="41" parent="19" name="auth_group_permissions_group_id_permission_id_key">
       <ObjectId>16443</ObjectId>
       <ColNames>group_id
 permission_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="41" parent="19" name="auth_group_permissions_0e939a4f">
+    <index id="42" parent="19" name="auth_group_permissions_0e939a4f">
       <ObjectId>16492</ObjectId>
       <ColNames>group_id</ColNames>
     </index>
-    <index id="42" parent="19" name="auth_group_permissions_8373b171">
+    <index id="43" parent="19" name="auth_group_permissions_8373b171">
       <ObjectId>16493</ObjectId>
       <ColNames>permission_id</ColNames>
     </index>
-    <key id="43" parent="19" name="auth_group_permissions_pkey">
+    <key id="44" parent="19" name="auth_group_permissions_pkey">
       <ObjectId>16442</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>auth_group_permissions_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="44" parent="19" name="auth_group_permissions_group_id_permission_id_key">
+    <key id="45" parent="19" name="auth_group_permissions_group_id_permission_id_key">
       <ObjectId>16444</ObjectId>
       <ColNames>group_id
 permission_id</ColNames>
       <UnderlyingIndexName>auth_group_permissions_group_id_permission_id_key</UnderlyingIndexName>
     </key>
-    <foreign-key id="45" parent="19" name="auth_group_permissions_group_id_58c48ba9_fk_auth_group_id">
+    <foreign-key id="46" parent="19" name="auth_group_permissions_group_id_58c48ba9_fk_auth_group_id">
       <ObjectId>16482</ObjectId>
       <ColNames>group_id</ColNames>
       <RefTableName>auth_group</RefTableName>
       <RefKeyName>auth_group_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="46" parent="19" name="auth_group_permiss_permission_id_23962d04_fk_auth_permission_id">
+    <foreign-key id="47" parent="19" name="auth_group_permiss_permission_id_23962d04_fk_auth_permission_id">
       <ObjectId>16487</ObjectId>
       <ColNames>permission_id</ColNames>
       <RefTableName>auth_permission</RefTableName>
       <RefKeyName>auth_permission_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="47" parent="20" name="id">
+    <column id="48" parent="20" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
       <DefaultExpression>nextval(&apos;auth_permission_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="48" parent="20" name="name">
+    <column id="49" parent="20" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>567</StateNumber>
     </column>
-    <column id="49" parent="20" name="content_type_id">
+    <column id="50" parent="20" name="content_type_id">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <column id="50" parent="20" name="codename">
+    <column id="51" parent="20" name="codename">
       <Position>4</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <index id="51" parent="20" name="auth_permission_pkey">
+    <index id="52" parent="20" name="auth_permission_pkey">
       <ObjectId>16421</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="52" parent="20" name="auth_permission_content_type_id_codename_key">
+    <index id="53" parent="20" name="auth_permission_content_type_id_codename_key">
       <ObjectId>16423</ObjectId>
       <ColNames>content_type_id
 codename</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="53" parent="20" name="auth_permission_417f1b1c">
+    <index id="54" parent="20" name="auth_permission_417f1b1c">
       <ObjectId>16480</ObjectId>
       <ColNames>content_type_id</ColNames>
     </index>
-    <key id="54" parent="20" name="auth_permission_pkey">
+    <key id="55" parent="20" name="auth_permission_pkey">
       <ObjectId>16422</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>auth_permission_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="55" parent="20" name="auth_permission_content_type_id_codename_key">
+    <key id="56" parent="20" name="auth_permission_content_type_id_codename_key">
       <ObjectId>16424</ObjectId>
       <ColNames>content_type_id
 codename</ColNames>
       <UnderlyingIndexName>auth_permission_content_type_id_codename_key</UnderlyingIndexName>
     </key>
-    <foreign-key id="56" parent="20" name="auth_permiss_content_type_id_51277a81_fk_django_content_type_id">
+    <foreign-key id="57" parent="20" name="auth_permiss_content_type_id_51277a81_fk_django_content_type_id">
       <ObjectId>16475</ObjectId>
       <ColNames>content_type_id</ColNames>
       <RefTableName>django_content_type</RefTableName>
       <RefKeyName>django_content_type_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="57" parent="21" name="id">
+    <column id="58" parent="21" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
       <DefaultExpression>nextval(&apos;auth_user_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="58" parent="21" name="password">
+    <column id="59" parent="21" name="password">
       <Position>2</Position>
       <DataType>varchar(128)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <column id="59" parent="21" name="last_login">
+    <column id="60" parent="21" name="last_login">
       <Position>3</Position>
       <DataType>timestamp with time zone|0</DataType>
       <StateNumber>572</StateNumber>
     </column>
-    <column id="60" parent="21" name="is_superuser">
+    <column id="61" parent="21" name="is_superuser">
       <Position>4</Position>
       <DataType>boolean|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <column id="61" parent="21" name="username">
+    <column id="62" parent="21" name="username">
       <Position>5</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <column id="62" parent="21" name="first_name">
+    <column id="63" parent="21" name="first_name">
       <Position>6</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <column id="63" parent="21" name="last_name">
+    <column id="64" parent="21" name="last_name">
       <Position>7</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <column id="64" parent="21" name="email">
+    <column id="65" parent="21" name="email">
       <Position>8</Position>
       <DataType>varchar(254)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>569</StateNumber>
     </column>
-    <column id="65" parent="21" name="is_staff">
+    <column id="66" parent="21" name="is_staff">
       <Position>9</Position>
       <DataType>boolean|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <column id="66" parent="21" name="is_active">
+    <column id="67" parent="21" name="is_active">
       <Position>10</Position>
       <DataType>boolean|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <column id="67" parent="21" name="date_joined">
+    <column id="68" parent="21" name="date_joined">
       <Position>11</Position>
       <DataType>timestamp with time zone|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <index id="68" parent="21" name="auth_user_pkey">
+    <index id="69" parent="21" name="auth_user_pkey">
       <ObjectId>16451</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="69" parent="21" name="auth_user_username_key">
+    <index id="70" parent="21" name="auth_user_username_key">
       <ObjectId>16453</ObjectId>
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="70" parent="21" name="auth_user_username_94b8aae_like">
+    <index id="71" parent="21" name="auth_user_username_94b8aae_like">
       <ObjectId>16494</ObjectId>
       <ColNames>username</ColNames>
     </index>
-    <key id="71" parent="21" name="auth_user_pkey">
+    <key id="72" parent="21" name="auth_user_pkey">
       <ObjectId>16452</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>auth_user_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="72" parent="21" name="auth_user_username_key">
+    <key id="73" parent="21" name="auth_user_username_key">
       <ObjectId>16454</ObjectId>
       <ColNames>username</ColNames>
       <UnderlyingIndexName>auth_user_username_key</UnderlyingIndexName>
     </key>
-    <column id="73" parent="22" name="id">
+    <column id="74" parent="22" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
       <DefaultExpression>nextval(&apos;auth_user_groups_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="74" parent="22" name="user_id">
+    <column id="75" parent="22" name="user_id">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <column id="75" parent="22" name="group_id">
+    <column id="76" parent="22" name="group_id">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <index id="76" parent="22" name="auth_user_groups_pkey">
+    <index id="77" parent="22" name="auth_user_groups_pkey">
       <ObjectId>16461</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="77" parent="22" name="auth_user_groups_user_id_group_id_key">
+    <index id="78" parent="22" name="auth_user_groups_user_id_group_id_key">
       <ObjectId>16463</ObjectId>
       <ColNames>user_id
 group_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="78" parent="22" name="auth_user_groups_e8701ad4">
+    <index id="79" parent="22" name="auth_user_groups_e8701ad4">
       <ObjectId>16505</ObjectId>
       <ColNames>user_id</ColNames>
     </index>
-    <index id="79" parent="22" name="auth_user_groups_0e939a4f">
+    <index id="80" parent="22" name="auth_user_groups_0e939a4f">
       <ObjectId>16506</ObjectId>
       <ColNames>group_id</ColNames>
     </index>
-    <key id="80" parent="22" name="auth_user_groups_pkey">
+    <key id="81" parent="22" name="auth_user_groups_pkey">
       <ObjectId>16462</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>auth_user_groups_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="81" parent="22" name="auth_user_groups_user_id_group_id_key">
+    <key id="82" parent="22" name="auth_user_groups_user_id_group_id_key">
       <ObjectId>16464</ObjectId>
       <ColNames>user_id
 group_id</ColNames>
       <UnderlyingIndexName>auth_user_groups_user_id_group_id_key</UnderlyingIndexName>
     </key>
-    <foreign-key id="82" parent="22" name="auth_user_groups_user_id_24702650_fk_auth_user_id">
+    <foreign-key id="83" parent="22" name="auth_user_groups_user_id_24702650_fk_auth_user_id">
       <ObjectId>16495</ObjectId>
       <ColNames>user_id</ColNames>
       <RefTableName>auth_user</RefTableName>
       <RefKeyName>auth_user_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="83" parent="22" name="auth_user_groups_group_id_30a071c9_fk_auth_group_id">
+    <foreign-key id="84" parent="22" name="auth_user_groups_group_id_30a071c9_fk_auth_group_id">
       <ObjectId>16500</ObjectId>
       <ColNames>group_id</ColNames>
       <RefTableName>auth_group</RefTableName>
       <RefKeyName>auth_group_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="84" parent="23" name="id">
+    <column id="85" parent="23" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
       <DefaultExpression>nextval(&apos;auth_user_user_permissions_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="85" parent="23" name="user_id">
+    <column id="86" parent="23" name="user_id">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <column id="86" parent="23" name="permission_id">
+    <column id="87" parent="23" name="permission_id">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>561</StateNumber>
     </column>
-    <index id="87" parent="23" name="auth_user_user_permissions_pkey">
+    <index id="88" parent="23" name="auth_user_user_permissions_pkey">
       <ObjectId>16471</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="88" parent="23" name="auth_user_user_permissions_user_id_permission_id_key">
+    <index id="89" parent="23" name="auth_user_user_permissions_user_id_permission_id_key">
       <ObjectId>16473</ObjectId>
       <ColNames>user_id
 permission_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="89" parent="23" name="auth_user_user_permissions_e8701ad4">
+    <index id="90" parent="23" name="auth_user_user_permissions_e8701ad4">
       <ObjectId>16517</ObjectId>
       <ColNames>user_id</ColNames>
     </index>
-    <index id="90" parent="23" name="auth_user_user_permissions_8373b171">
+    <index id="91" parent="23" name="auth_user_user_permissions_8373b171">
       <ObjectId>16518</ObjectId>
       <ColNames>permission_id</ColNames>
     </index>
-    <key id="91" parent="23" name="auth_user_user_permissions_pkey">
+    <key id="92" parent="23" name="auth_user_user_permissions_pkey">
       <ObjectId>16472</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>auth_user_user_permissions_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="92" parent="23" name="auth_user_user_permissions_user_id_permission_id_key">
+    <key id="93" parent="23" name="auth_user_user_permissions_user_id_permission_id_key">
       <ObjectId>16474</ObjectId>
       <ColNames>user_id
 permission_id</ColNames>
       <UnderlyingIndexName>auth_user_user_permissions_user_id_permission_id_key</UnderlyingIndexName>
     </key>
-    <foreign-key id="93" parent="23" name="auth_user_user_permissions_user_id_7cd7acb6_fk_auth_user_id">
+    <foreign-key id="94" parent="23" name="auth_user_user_permissions_user_id_7cd7acb6_fk_auth_user_id">
       <ObjectId>16507</ObjectId>
       <ColNames>user_id</ColNames>
       <RefTableName>auth_user</RefTableName>
       <RefKeyName>auth_user_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="94" parent="23" name="auth_user_user_per_permission_id_3d7071f0_fk_auth_permission_id">
+    <foreign-key id="95" parent="23" name="auth_user_user_per_permission_id_3d7071f0_fk_auth_permission_id">
       <ObjectId>16512</ObjectId>
       <ColNames>permission_id</ColNames>
       <RefTableName>auth_permission</RefTableName>
       <RefKeyName>auth_permission_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="95" parent="24" name="key">
+    <column id="96" parent="24" name="key">
       <Position>1</Position>
       <DataType>varchar(40)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>575</StateNumber>
     </column>
-    <column id="96" parent="24" name="created">
+    <column id="97" parent="24" name="created">
       <Position>2</Position>
       <DataType>timestamp with time zone|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>575</StateNumber>
     </column>
-    <column id="97" parent="24" name="user_id">
+    <column id="98" parent="24" name="user_id">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>575</StateNumber>
     </column>
-    <index id="98" parent="24" name="authtoken_token_pkey">
+    <index id="99" parent="24" name="authtoken_token_pkey">
       <ObjectId>16546</ObjectId>
       <ColNames>key</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="99" parent="24" name="authtoken_token_user_id_key">
+    <index id="100" parent="24" name="authtoken_token_user_id_key">
       <ObjectId>16548</ObjectId>
       <ColNames>user_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="100" parent="24" name="authtoken_token_key_2cd32dcd_like">
+    <index id="101" parent="24" name="authtoken_token_key_2cd32dcd_like">
       <ObjectId>16555</ObjectId>
       <ColNames>key</ColNames>
     </index>
-    <key id="101" parent="24" name="authtoken_token_pkey">
+    <key id="102" parent="24" name="authtoken_token_pkey">
       <ObjectId>16547</ObjectId>
       <ColNames>key</ColNames>
       <UnderlyingIndexName>authtoken_token_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="102" parent="24" name="authtoken_token_user_id_key">
+    <key id="103" parent="24" name="authtoken_token_user_id_key">
       <ObjectId>16549</ObjectId>
       <ColNames>user_id</ColNames>
       <UnderlyingIndexName>authtoken_token_user_id_key</UnderlyingIndexName>
     </key>
-    <foreign-key id="103" parent="24" name="authtoken_token_user_id_535fb363_fk_auth_user_id">
+    <foreign-key id="104" parent="24" name="authtoken_token_user_id_535fb363_fk_auth_user_id">
       <ObjectId>16556</ObjectId>
       <ColNames>user_id</ColNames>
       <RefTableName>auth_user</RefTableName>
       <RefKeyName>auth_user_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="104" parent="25" name="id">
+    <column id="105" parent="25" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>563</StateNumber>
       <DefaultExpression>nextval(&apos;django_admin_log_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="105" parent="25" name="action_time">
+    <column id="106" parent="25" name="action_time">
       <Position>2</Position>
       <DataType>timestamp with time zone|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>563</StateNumber>
     </column>
-    <column id="106" parent="25" name="object_id">
+    <column id="107" parent="25" name="object_id">
       <Position>3</Position>
       <DataType>text|0</DataType>
       <StateNumber>563</StateNumber>
     </column>
-    <column id="107" parent="25" name="object_repr">
+    <column id="108" parent="25" name="object_repr">
       <Position>4</Position>
       <DataType>varchar(200)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>563</StateNumber>
     </column>
-    <column id="108" parent="25" name="action_flag">
+    <column id="109" parent="25" name="action_flag">
       <Position>5</Position>
       <DataType>smallint|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>563</StateNumber>
     </column>
-    <column id="109" parent="25" name="change_message">
+    <column id="110" parent="25" name="change_message">
       <Position>6</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>563</StateNumber>
     </column>
-    <column id="110" parent="25" name="content_type_id">
+    <column id="111" parent="25" name="content_type_id">
       <Position>7</Position>
       <DataType>integer|0</DataType>
       <StateNumber>563</StateNumber>
     </column>
-    <column id="111" parent="25" name="user_id">
+    <column id="112" parent="25" name="user_id">
       <Position>8</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>563</StateNumber>
     </column>
-    <index id="112" parent="25" name="django_admin_log_pkey">
+    <index id="113" parent="25" name="django_admin_log_pkey">
       <ObjectId>16529</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="113" parent="25" name="django_admin_log_417f1b1c">
+    <index id="114" parent="25" name="django_admin_log_417f1b1c">
       <ObjectId>16541</ObjectId>
       <ColNames>content_type_id</ColNames>
     </index>
-    <index id="114" parent="25" name="django_admin_log_e8701ad4">
+    <index id="115" parent="25" name="django_admin_log_e8701ad4">
       <ObjectId>16542</ObjectId>
       <ColNames>user_id</ColNames>
     </index>
-    <key id="115" parent="25" name="django_admin_log_pkey">
+    <key id="116" parent="25" name="django_admin_log_pkey">
       <ObjectId>16530</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>django_admin_log_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="116" parent="25" name="django_admin_content_type_id_5151027a_fk_django_content_type_id">
+    <foreign-key id="117" parent="25" name="django_admin_content_type_id_5151027a_fk_django_content_type_id">
       <ObjectId>16531</ObjectId>
       <ColNames>content_type_id</ColNames>
       <RefTableName>django_content_type</RefTableName>
       <RefKeyName>django_content_type_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="117" parent="25" name="django_admin_log_user_id_1c5f563_fk_auth_user_id">
+    <foreign-key id="118" parent="25" name="django_admin_log_user_id_1c5f563_fk_auth_user_id">
       <ObjectId>16536</ObjectId>
       <ColNames>user_id</ColNames>
       <RefTableName>auth_user</RefTableName>
       <RefKeyName>auth_user_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <check id="118" parent="25" name="django_admin_log_action_flag_check">
+    <check id="119" parent="25" name="django_admin_log_action_flag_check">
       <ObjectId>16525</ObjectId>
       <ColNames>action_flag</ColNames>
       <Predicate>action_flag &gt;= 0</Predicate>
     </check>
-    <column id="119" parent="26" name="id">
+    <column id="120" parent="26" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>559</StateNumber>
       <DefaultExpression>nextval(&apos;django_content_type_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="120" parent="26" name="app_label">
+    <column id="121" parent="26" name="app_label">
       <Position>3</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>559</StateNumber>
     </column>
-    <column id="121" parent="26" name="model">
+    <column id="122" parent="26" name="model">
       <Position>4</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>559</StateNumber>
     </column>
-    <index id="122" parent="26" name="django_content_type_pkey">
+    <index id="123" parent="26" name="django_content_type_pkey">
       <ObjectId>16411</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="123" parent="26" name="django_content_type_app_label_3ec8c61c_uniq">
+    <index id="124" parent="26" name="django_content_type_app_label_3ec8c61c_uniq">
       <ObjectId>16413</ObjectId>
       <ColNames>app_label
 model</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="124" parent="26" name="django_content_type_pkey">
+    <key id="125" parent="26" name="django_content_type_pkey">
       <ObjectId>16412</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>django_content_type_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="125" parent="26" name="django_content_type_app_label_3ec8c61c_uniq">
+    <key id="126" parent="26" name="django_content_type_app_label_3ec8c61c_uniq">
       <ObjectId>16414</ObjectId>
       <ColNames>app_label
 model</ColNames>
       <UnderlyingIndexName>django_content_type_app_label_3ec8c61c_uniq</UnderlyingIndexName>
     </key>
-    <column id="126" parent="27" name="id">
+    <column id="127" parent="27" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>558</StateNumber>
       <DefaultExpression>nextval(&apos;django_migrations_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="127" parent="27" name="app">
+    <column id="128" parent="27" name="app">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>558</StateNumber>
     </column>
-    <column id="128" parent="27" name="name">
+    <column id="129" parent="27" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>558</StateNumber>
     </column>
-    <column id="129" parent="27" name="applied">
+    <column id="130" parent="27" name="applied">
       <Position>4</Position>
       <DataType>timestamp with time zone|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>558</StateNumber>
     </column>
-    <index id="130" parent="27" name="django_migrations_pkey">
+    <index id="131" parent="27" name="django_migrations_pkey">
       <ObjectId>16403</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="131" parent="27" name="django_migrations_pkey">
+    <key id="132" parent="27" name="django_migrations_pkey">
       <ObjectId>16404</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>django_migrations_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="132" parent="28" name="session_key">
+    <column id="133" parent="28" name="session_key">
       <Position>1</Position>
       <DataType>varchar(40)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>579</StateNumber>
     </column>
-    <column id="133" parent="28" name="session_data">
+    <column id="134" parent="28" name="session_data">
       <Position>2</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>579</StateNumber>
     </column>
-    <column id="134" parent="28" name="expire_date">
+    <column id="135" parent="28" name="expire_date">
       <Position>3</Position>
       <DataType>timestamp with time zone|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>579</StateNumber>
     </column>
-    <index id="135" parent="28" name="django_session_pkey">
+    <index id="136" parent="28" name="django_session_pkey">
       <ObjectId>16567</ObjectId>
       <ColNames>session_key</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="136" parent="28" name="django_session_session_key_630ca218_like">
+    <index id="137" parent="28" name="django_session_session_key_630ca218_like">
       <ObjectId>16570</ObjectId>
       <ColNames>session_key</ColNames>
     </index>
-    <index id="137" parent="28" name="django_session_de54fa62">
+    <index id="138" parent="28" name="django_session_de54fa62">
       <ObjectId>16569</ObjectId>
       <ColNames>expire_date</ColNames>
     </index>
-    <key id="138" parent="28" name="django_session_pkey">
+    <key id="139" parent="28" name="django_session_pkey">
       <ObjectId>16568</ObjectId>
       <ColNames>session_key</ColNames>
       <UnderlyingIndexName>django_session_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="140" parent="29" name="id">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>599</StateNumber>
+    </column>
+    <column id="141" parent="29" name="title">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>599</StateNumber>
+    </column>
+    <column id="142" parent="29" name="completed">
+      <Position>3</Position>
+      <DataType>boolean|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>599</StateNumber>
+    </column>
+    <column id="143" parent="29" name="urgency">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>599</StateNumber>
+    </column>
+    <column id="144" parent="29" name="expire_datetime">
+      <Position>5</Position>
+      <DataType>timestamp with time zone|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>599</StateNumber>
+    </column>
+    <column id="145" parent="29" name="create_datetime">
+      <Position>6</Position>
+      <DataType>timestamp with time zone|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>599</StateNumber>
+    </column>
+    <index id="146" parent="29" name="todo_todo_pkey">
+      <ObjectId>16577</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="147" parent="29" name="todo_todo_id_37bb7596_like">
+      <ObjectId>16579</ObjectId>
+      <ColNames>id</ColNames>
+    </index>
+    <key id="148" parent="29" name="todo_todo_pkey">
+      <ObjectId>16578</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>todo_todo_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
   </database-model>

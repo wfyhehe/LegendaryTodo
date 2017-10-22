@@ -29,9 +29,19 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '.flyingwang.com',
     '.flyingwang.com.',
-    '.localhost.',
-    '.localhost',
+    'localhost',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
 
 # Application definition
 
@@ -45,10 +55,13 @@ INSTALLED_APPS = (
     'rest_framework',
     'django_filters',
     'corsheaders',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'todo'
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -57,8 +70,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
 )
 
 ROOT_URLCONF = 'LegendaryTodo.urls'
@@ -123,11 +134,17 @@ STATICFILES_DIRS = (
     ('fonts', os.path.join(STATIC_ROOT, 'fonts').replace('\\', '/')),
 )
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': {'django_filters.rest_framework.DjangoFilterBackend'},
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': {
-        'rest_framework.authentication.BaseAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BaseAuthentication',
     }
 }

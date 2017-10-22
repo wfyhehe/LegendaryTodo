@@ -1,8 +1,8 @@
 import React from 'react'
-import {inject, observer} from 'mobx-react';
-import {Button, Select} from 'antd';
+import {inject, observer} from 'mobx-react'
+import {Button, Select} from 'antd'
 import './style.less'
-import {ALL, COMPLETED, EXPIRED, INCOMPLETE} from '../../constants/viewStore';
+import {ALL, COMPLETED, EXPIRED, INCOMPLETE} from '../../constants/viewStore'
 
 const Option = Select.Option
 
