@@ -3,7 +3,7 @@ import {Col, Layout, Menu, Row} from 'antd'
 import './style.less'
 import {backendUrl} from '../../config/urlConfig'
 import SignIn from '../../components/SignIn/index'
-import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
+import {Router, Route, Switch, Redirect} from 'react-router-dom'
 import SignUp from '../../components/SignUp/index'
 
 const {Header, Content, Footer} = Layout
@@ -25,13 +25,13 @@ class User extends React.Component {
                 <img src={backendUrl + '/media/poster.png'}/>
               </Col>
               <Col span={8}>
-                <Router>
-                  <Switch>
-                    <Redirect exact path='/user' to='/user/sign-in'/>
-                    <Route path='/user/sign-in' component={SignIn}/>
-                    <Route path='/user/sign-up' component={SignUp}/>
-                  </Switch>
-                </Router>
+                {/*<Router history={this.props.history}>*/}
+                <Switch>
+                  <Redirect exact path='/user' to='/user/sign-in'/>
+                  <Route path='/user/sign-in' component={SignIn}/>
+                  <Route path='/user/sign-up' component={SignUp}/>
+                </Switch>
+                {/*</Router>*/}
               </Col>
               <Col span={4}>
               </Col>

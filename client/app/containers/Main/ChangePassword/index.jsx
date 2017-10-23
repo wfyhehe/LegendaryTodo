@@ -1,16 +1,15 @@
 import React from 'react'
-import {Form, Icon, Input, Button, Checkbox} from 'antd'
+import {Form, Input, Button} from 'antd'
 import {Link} from 'react-router-dom'
-import {backendUrl} from '../../config/urlConfig';
-import {message} from 'antd';
-import {TOKEN, USERNAME} from '../../constants/localStorage';
-import local from '../../utils/localStore';
-// import axios from '../../axios/index'
-import axios from '../../axios/index'
+import {backendUrl} from '../../../config/urlConfig'
+import {message} from 'antd'
+import {TOKEN, USERNAME} from '../../../constants/localStorage'
+import local from '../../../utils/localStore'
+import axios from '../../../axios/index'
 
 const FormItem = Form.Item
 
-class SignUpForm extends React.Component {
+class ChangePasswordForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
@@ -167,5 +166,5 @@ class SignUpForm extends React.Component {
   }
 }
 
-const SignUp = Form.create()(SignUpForm);
-export default SignUp
+const ChangePassword = Form.create()(ChangePasswordForm);
+export default ChangePassword

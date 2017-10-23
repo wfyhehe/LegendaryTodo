@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.views.static import serve
 from rest_framework.authtoken import views
 from rest_framework.routers import DefaultRouter
-from rest_framework_jwt.views import obtain_jwt_token
+from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token
 
 from LegendaryTodo.settings import MEDIA_ROOT
 from todo.views import TodoViewSet
@@ -32,5 +32,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     url(r'^sign-in/', obtain_jwt_token),
+    url(r'^verify/', verify_jwt_token),
     url(r'^', include(router.urls)),
 ]

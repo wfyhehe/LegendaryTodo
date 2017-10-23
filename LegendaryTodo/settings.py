@@ -112,7 +112,7 @@ DATABASES = {
 }
 
 JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=30),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
     'JWT_AUTH_HEADER_PREFIX': 'Token',
 }
 

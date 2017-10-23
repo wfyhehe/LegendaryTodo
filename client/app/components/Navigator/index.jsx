@@ -1,20 +1,25 @@
-import {Menu, Icon} from 'antd';
-import React from 'react';
-import {Link} from 'react-router-dom';
+import {Menu, Icon} from 'antd'
+import React from 'react'
+import {Link} from 'react-router-dom'
 import './style.less'
-import {inject, observer} from 'mobx-react';
+import {inject, observer} from 'mobx-react'
+import {TOKEN, USERNAME} from '../../constants/localStorage'
+import local from '../../utils/localStore'
+import {message} from 'antd'
+import createHashHistory from 'history/createHashHistory'
 
-const SubMenu = Menu.SubMenu;
+const history = createHashHistory()
+const SubMenu = Menu.SubMenu
 
 @inject('viewStore') @observer
 class Navigator extends React.Component {
+
   signOut = () => {
-    console.log('signOut')
+    local.removeItem(TOKEN)
+    local.removeItem(USERNAME)
+    message.success('退出成功！')
   }
 
-  componentDidMount() {
-    console.log(this.props.viewStore)
-  }
 
   render() {
     const {viewStore} = this.props
@@ -24,6 +29,8 @@ class Navigator extends React.Component {
           !viewStore.collapsed ?
             <div className="expanded-icon">
               <i className="icon icon-Legendary-Todo"/>
+              <div className="username-wrapper">Welcome, <span className="username">{local.getItem(USERNAME)}</span>!
+              </div>
             </div>
             :
             <div className="collapsed-icon">
@@ -53,12 +60,12 @@ class Navigator extends React.Component {
               </Link>
             </Menu.Item>
             <Menu.Item key="4">
-              <span onClick={this.signOut.bind(this)}>退出登录</span>
+              <Link to='/user/sign-in' onClick={this.signOut.bind(this)}>退出登录</Link>
             </Menu.Item>
           </SubMenu>
         </Menu>
       </div>
-    );
+    )
   }
 }
 

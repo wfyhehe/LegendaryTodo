@@ -9,51 +9,21 @@ import axios from '../../axios/index'
 
 @inject('todoStore') @inject('viewStore') @observer
 class List extends React.Component {
-
-  test = () => {
-    const url = `${backendUrl}/sign-in/`
-    axios.post(url, JSON.stringify({ // 验证用户名密码
-      username: 'admin',
-      password: 'admin123'
-    }), {
-      headers: {
-        'Content-Type': 'application/json;charset=UTF-8'
-      }
-    }).then(response => {
-      console.log(response)
-      if (response.status >= 200 && response.status < 300) {
-        local.setItem(TOKEN, response.data.token)
-      }
-    }).catch(err => {
-      console.log(err)
-    })
-  }
-  test2 = () => {
-    const url = `${backendUrl}/todo/`
-    axios.get(url, {
-      params: {}
-    }, {
-      headers: {
-        'Content-Type': 'application/json;charset=UTF-8'
-      }
-    }).then(response => {
-      console.log(response)
-      if (response.status >= 200 && response.status < 300) {
-        console.log(response.data)
-      }
-    }).catch(err => {
-      console.log(err)
-    })
+  constructor(props, context) {
+    super(props, context)
+    this.state = {
+      todos: []
+    }
   }
 
   render() {
     const {todoStore, viewStore} = this.props
+    const {todos} = this.state
     return (
       <div id="list">
-        <Button type="primary" onClick={this.test.bind(this)}>test</Button>
-        <Button type="primary" onClick={this.test2.bind(this)}>test2</Button>
+
         <div className="timeline">
-          {todoStore.todos.map((item) => {
+          {todos.map((item) => {
             return (
               <TodoItem item={item}/>
             )
@@ -61,6 +31,17 @@ class List extends React.Component {
         </div>
       </div>
     )
+  }
+
+  componentDidMount() {
+    const url = `${backendUrl}/todos/`
+    axios.get(url, {
+      params: {}
+    }).then(response => {
+      this.state.todos = response.data
+    }).catch(err => {
+    })
+
   }
 }
 

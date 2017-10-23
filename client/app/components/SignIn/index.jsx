@@ -3,8 +3,9 @@ import {Form, Icon, Input, Button, Checkbox} from 'antd'
 import {Link} from 'react-router-dom'
 import {backendUrl} from '../../config/urlConfig'
 import local from '../../utils/localStore'
-import {TOKEN} from '../../constants/localStorage'
+import {TOKEN, USERNAME} from '../../constants/localStorage'
 import {message} from 'antd'
+import axios from '../../axios/index'
 
 const FormItem = Form.Item;
 
@@ -15,29 +16,20 @@ class SignInForm extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         const url = `${backendUrl}/sign-in/`
-        fetch(url, {
-          method: 'POST',
-          body: JSON.stringify({
-            username: values.username,
-            password: values.password
-          }),
+        axios.post(url, JSON.stringify({
+          username: values.username,
+          password: values.password
+        }), {
           headers: {
             'Content-Type': 'application/json'
           }
         }).then((response) => {
-          console.log(response)
-          if (response.status >= 200 && response.status < 300) {
-            message.success('登录成功!')
-            return response.json()
-          } else {
-            message.error('登录失败!')
-            return null
-          }
-        }, (error) => {
-          console.log(error)
-        }).then((json) => {
-          local.setItem(TOKEN, json.token)
+          message.success('登录成功!')
+          local.setItem(TOKEN, response.data.token)
+          local.setItem(USERNAME, values.username)
           this.props.history.push('/')
+        }).catch((error) => {
+          console.log(error)
         })
       }
     })
@@ -94,6 +86,18 @@ class SignInForm extends React.Component {
         </FormItem>
       </Form>
     )
+  }
+
+  componentDidMount() {
+    const url = `${backendUrl}/verify/`
+    axios.post(url, {
+      token: local.getItem(TOKEN)
+    }).then(response => {
+      if (response.status >= 200 && response.status < 300) {
+        this.props.history.push('/')
+      }
+    }).catch(err => {
+    })
   }
 }
 

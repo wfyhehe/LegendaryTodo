@@ -16,8 +16,16 @@ export default {
   },
   setItem(key, value) {
     try {
-      // ios safari 无痕模式下，直接使用 localStorage.setItem 会报错
       localStorage.setItem(key, value)
+    } catch (ex) {
+      if (__DEV__) {
+        console.error('localStorage.setItem报错, ', ex.message)
+      }
+    }
+  },
+  removeItem(key) {
+    try {
+      localStorage.removeItem(key)
     } catch (ex) {
       if (__DEV__) {
         console.error('localStorage.setItem报错, ', ex.message)
