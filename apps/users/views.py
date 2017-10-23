@@ -34,3 +34,6 @@ class UserViewSet(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.Retri
 
     def perform_create(self, serializer):
         return serializer.save()
+
+    def get_object(self):
+        return self.request.user

@@ -24,6 +24,7 @@ class Todo(models.Model):
     urgency = models.IntegerField(choices=URGENCY_DEGREE, verbose_name='紧急程度')
     expire_datetime = models.DateTimeField(verbose_name='过期时间')
     create_datetime = models.DateTimeField(default=datetime.now, verbose_name='创建时间')
+    deleted = models.BooleanField(verbose_name='是否删除')
 
     class Meta:
         verbose_name = "Todo"

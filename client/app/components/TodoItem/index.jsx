@@ -7,13 +7,16 @@ import {inject, observer} from 'mobx-react';
 class TodoItem extends React.Component {
 
   render() {
-    const {todoStore} = this.props
-    const item = this.props.item
+    const {todoStore, data} = this.props
     return (
-      <div className="todo-item" color={item.color}>
-        <p>{item.title}</p>
+      <div className="todo-item">
+        <p>{data.title}</p>
       </div>
     )
+  }
+
+  componentDidMount() {
+    console.log(this.props)
   }
 }
 
