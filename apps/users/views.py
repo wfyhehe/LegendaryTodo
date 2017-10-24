@@ -21,7 +21,6 @@ class UserViewSet(mixins.CreateModelMixin, mixins.UpdateModelMixin,
     queryset = MyUser.objects.all()
     serializer_class = UserSignUpSerializer
 
-    # authentication_classes = (JSONWebTokenAuthentication, authentication.SessionAuthentication )
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
