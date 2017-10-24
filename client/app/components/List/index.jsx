@@ -46,6 +46,13 @@ class List extends React.Component {
             </div>
           )
         }
+        {
+          !this.state.loading && todoStore.todosView.length === 0 && (
+            <div className="loading">
+              没有任务！
+            </div>
+          )
+        }
         <div>
           <Button icon="plus" shape="circle" className="add-button" onClick={this.showModal.bind(this)}/>
           <TodoModal/>
