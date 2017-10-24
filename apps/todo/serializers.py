@@ -17,11 +17,6 @@ class TodoSerializer(serializers.ModelSerializer):
         default=serializers.CurrentUserDefault()
     )
 
-    def update(self, instance, validated_data):
-        instance.completed = validated_data['completed']
-        instance.save()
-        return instance
-
     class Meta:
         model = Todo
         fields = '__all__'

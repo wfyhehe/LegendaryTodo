@@ -6,15 +6,16 @@ import './style.less'
 import axios from '../../axios/index'
 import {backendUrl} from '../../config/urlConfig'
 import moment from 'moment'
+import {UPDATE} from '../../constants/modalStore';
 
-@inject('todoStore') @observer
+@inject('todoStore') @inject('modalStore') @observer
 class TodoItem extends React.Component {
 
   onCompletedChange = (id, e) => {
     const completed = e.target.checked
     const url = `${backendUrl}/todo/${id}`
     this.props.todoStore.setCompleted(id, completed)
-    axios.patch(url, JSON.stringify({ // 验证用户名密码
+    axios.patch(url, JSON.stringify({
       completed
     }), {
       headers: {
@@ -26,9 +27,15 @@ class TodoItem extends React.Component {
     })
   }
 
-  onEdit = (id) => {
-    console.log(id)
-    console.log(this)
+  onEdit = (data) => {
+    this.props.modalStore.initData(
+      data.id,
+      UPDATE,
+      data.title,
+      data.urgency,
+      moment(data.expire_datetime),
+      moment(data.expire_datetime)
+    )
   }
 
   onDelete = (id) => {
@@ -62,7 +69,7 @@ class TodoItem extends React.Component {
                   className="delete-button"
                   type="ghost"
                   icon="edit"
-                  onClick={this.onEdit.bind(this, data.id)}/>
+                  onClick={this.onEdit.bind(this, data)}/>
               </div>}>
         <p className="title">{data.title}</p>
       </Card>

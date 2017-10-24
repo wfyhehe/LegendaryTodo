@@ -7,14 +7,13 @@ class ViewStore {
   @observable showToday;
   @observable todoCategory;
   @observable order;
-  @observable modalType;
 
 
   constructor() {
     this.collapsed = false;
     this.showToday = false;
     this.todoCategory = ALL;
-    this.modalType = HIDDEN;
+    this.order = HIDDEN;
   }
 
   @action.bound
@@ -28,14 +27,10 @@ class ViewStore {
   }
 
   @action.bound
-  OnTodoCategory(value) {
+  onTodoCategory(value) {
     this.todoCategory = value
   }
 
-  @action.bound
-  OnChangeModal(value) {
-    this.modalType = value
-  }
 
 }
 
