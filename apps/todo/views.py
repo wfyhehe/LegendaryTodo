@@ -8,6 +8,7 @@ from rest_framework.authentication import TokenAuthentication, BasicAuthenticati
 from rest_framework.filters import DjangoFilterBackend
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 from todo.filters import TodoFilter
@@ -17,11 +18,9 @@ from utils.permissions import IsOwnerOrReadOnly
 import uuid
 
 
-class TodoViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.RetrieveModelMixin,
-                  viewsets.GenericViewSet):
+class TodoViewSet(ModelViewSet):
     permission_classes = (IsAuthenticated, IsOwnerOrReadOnly)
     authentication_classes = (JSONWebTokenAuthentication,)
-    # lookup_field = "id"
 
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
@@ -38,6 +37,8 @@ class TodoViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.Retriev
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
+    def get_queryset(self):
+        return Todo.objects.filter(user=self.request.user)
 
 #
 # def home(request):

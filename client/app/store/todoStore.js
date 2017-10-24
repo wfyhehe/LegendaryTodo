@@ -37,9 +37,17 @@ class TodoStore {
 
   @observable todos = []
 
+  getTodo = (id) => {
+    return this.todos.find(item =>
+      item.id === id
+    )
+  }
 
-  @action addTodo = (title, ddl) => {
-    this.todos.push(new TodoModel(this, uuid(), title, ddl, false))
+  @action setCompleted = (id, complete) => {
+    let todo = this.todos.find(item =>
+      item.id === id
+    )
+    todo.completed = complete
   }
 
 

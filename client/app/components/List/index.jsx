@@ -45,6 +45,7 @@ class List extends React.Component {
       }
     }).then(response => {
       message.success('添加成功!')
+      this.getTodos()
       this.setState({
         modalVisible: false
       })
@@ -82,12 +83,12 @@ class List extends React.Component {
     return (
       <div id="list">
         <div>
-          <Button icon="plus" shape="circle" className="add-button" onClick={this.showModal}/>
+          <Button icon="plus" shape="circle" className="add-button" onClick={this.showModal.bind(this)}/>
           <Modal
             title="添加任务"
             visible={this.state.modalVisible}
-            onOk={this.handleOk}
-            onCancel={this.handleCancel}
+            onOk={this.handleOk.bind(this)}
+            onCancel={this.handleCancel.bind(this)}
           >
             <div className="my-form-item">
               <TextArea
@@ -122,7 +123,7 @@ class List extends React.Component {
     )
   }
 
-  componentDidMount() {
+  getTodos() {
     const url = `${backendUrl}/todo/`
     axios.get(url, {
       params: {}
@@ -132,6 +133,11 @@ class List extends React.Component {
     })
 
   }
+
+  componentDidMount() {
+    this.getTodos()
+  }
+
 }
 
 export default List

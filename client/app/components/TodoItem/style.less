@@ -1,25 +1,41 @@
 .todo-item {
-  .me {
-    margin: 20px 30px;
-    color: whitesmoke;
-    font-size: 20px;
+  margin: 20px;
+  padding: 10px;
+  //background-color: aliceblue;
+  border-radius: 5px;
+  .complete {
+    margin-right: 10px;
+    float: left;
   }
-
-  .collapsed-icon {
-    margin: 20px 15px;
-    .icon {
-      color: orange;
-      font-weight: bold;
-      font-size: 30px;
-    }
+  .expire {
+    color: #777777;
+    font-size:12px;
+    //color: #1DA57A;
   }
-
-  .expanded-icon {
-    margin: 30px 12px;
-    .icon {
-      color: orange;
-      font-weight: bold;
-      font-size: 60px;
-    }
+  &.urgency1 {
+    border-top: 3px solid #bdebe1;
+  }
+  &.urgency2 {
+    border-top: 3px solid #e8b863;
+  }
+  &.urgency3 {
+    border-top: 3px solid #b66586;
+  }
+  &.urgency4 {
+    border-top: 3px solid #e25a70;
+  }
+  &.completed {
+    border-top: 3px solid #b9c65b;
+  }
+  .title {
+    font-size: 17px;
+  }
+  .edit-button {
+    float: right;
+    margin: 5px;
+  }
+  .delete-button {
+    float: right;
+    margin: 5px;
   }
 }

@@ -14,7 +14,8 @@ from users.models import MyUser
 from users.serializers import UserSignUpSerializer
 
 
-class UserViewSet(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+class UserViewSet(mixins.CreateModelMixin, mixins.UpdateModelMixin,
+                  mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     # authentication_classes = (JSONWebTokenAuthentication,)
     # permission_classes = (IsAuthenticated,)
     queryset = MyUser.objects.all()
