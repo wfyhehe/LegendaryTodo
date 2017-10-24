@@ -30,8 +30,6 @@ class ViewStore {
   onTodoCategory(value) {
     this.todoCategory = value
   }
-
-
 }
 
 const viewStore = new ViewStore();

@@ -1,19 +1,20 @@
 /* eslint-disable indent */
 import React from 'react'
-import {Button, Card, Checkbox, Timeline} from 'antd'
+import {Button, Card, Checkbox, Popconfirm, Timeline} from 'antd'
 import {inject, observer} from 'mobx-react'
 import './style.less'
 import axios from '../../axios/index'
 import {backendUrl} from '../../config/urlConfig'
 import moment from 'moment'
-import {UPDATE} from '../../constants/modalStore';
+import {UPDATE} from '../../constants/modalStore'
+import {message} from 'antd'
 
 @inject('todoStore') @inject('modalStore') @observer
 class TodoItem extends React.Component {
 
   onCompletedChange = (id, e) => {
     const completed = e.target.checked
-    const url = `${backendUrl}/todo/${id}`
+    const url = `${backendUrl}/todo/${id}/`
     this.props.todoStore.setCompleted(id, completed)
     axios.patch(url, JSON.stringify({
       completed
@@ -39,8 +40,18 @@ class TodoItem extends React.Component {
   }
 
   onDelete = (id) => {
-    console.log(id)
-    console.log(this)
+    const url = `${backendUrl}/todo/${id}/`
+    axios.patch(url, JSON.stringify({
+      deleted: true
+    }), {
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8'
+      }
+    }).then(response => {
+      message.success('删除成功!')
+      this.props.todoStore.removeTodo(id)
+    }).catch(error => {
+    })
   }
 
   render() {
@@ -60,14 +71,21 @@ class TodoItem extends React.Component {
               </div>}
             extra={
               <div>
-                <Button
-                  className="edit-button"
-                  type="ghost"
-                  icon="close"
-                  onClick={this.onDelete.bind(this, data.id)}/>
+                <Popconfirm
+                  title="Are you sure delete this task?"
+                  onConfirm={this.onDelete.bind(this, data.id)}
+                  okText="Yes"
+                  cancelText="No">
+                  <Button
+                    className="edit-button"
+                    type="danger"
+                    ghost
+                    icon="close"/>
+                </Popconfirm>
                 <Button
                   className="delete-button"
-                  type="ghost"
+                  type="primary"
+                  ghost
                   icon="edit"
                   onClick={this.onEdit.bind(this, data)}/>
               </div>}>

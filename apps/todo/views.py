@@ -38,7 +38,7 @@ class TodoViewSet(ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def get_queryset(self):
-        return Todo.objects.filter(user=self.request.user)
+        return Todo.objects.filter(user=self.request.user).exclude(deleted=True)
 
 #
 # def home(request):

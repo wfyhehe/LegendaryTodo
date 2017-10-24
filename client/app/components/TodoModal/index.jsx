@@ -35,7 +35,7 @@ class TodoModal extends React.Component {
       }).catch(error => {
       })
     } else if (this.props.modalStore.modalType === UPDATE) { //  update
-      url = `${backendUrl}/todo/${this.props.modalStore.id}`
+      url = `${backendUrl}/todo/${this.props.modalStore.id}/`
       axios.patch(url, JSON.stringify({
         title: this.props.modalStore.title,
         urgency: this.props.modalStore.urgency,
