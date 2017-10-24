@@ -1,4 +1,4 @@
-export default function uuid() {
+export function uuid() {
   let s = [];
   let hexDigits = '0123456789abcdef';
   for (let i = 0; i < 36; i++) {
@@ -10,3 +10,17 @@ export default function uuid() {
 
   return s.join('');
 }
+
+
+export function debounce(fn, delay) {
+  let timer
+  return function () {
+    let context = this
+    let args = arguments
+    clearTimeout(timer)
+    timer = setTimeout(function () {
+      fn.apply(context, args)
+    }, delay)
+  }
+}
+

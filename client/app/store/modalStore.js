@@ -25,15 +25,15 @@ class ModalStore {
     if (!this.date || !this.time) {
       return ''
     }
-    const date = this.date.format().split('T')[0]
-    const time = this.time.format().split('T')[1]
-    return date + 'T' + time
+    const date = this.date.format().split(/[T|+]/)[0]
+    const time = this.time.format().split(/[T|+]/)[1]
+    const datetime = date + 'T' + time
+    return datetime
   }
 
   @action.bound
   setType(value) {
     this.modalType = value
-    console.log(this.modalType)
   }
 
   @action.bound
@@ -68,7 +68,6 @@ class ModalStore {
 
 }
 
-const modalStore = new ModalStore();
+const modalStore = new ModalStore()
 
-export default modalStore;
-export {ModalStore};
+export default modalStore

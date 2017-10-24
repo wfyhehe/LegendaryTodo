@@ -1,13 +1,13 @@
 import React from 'react'
 
 class NotFound extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-  }
 
   render() {
     return (
-      <h1>404 not found page</h1>
+      <div>
+        <h1>404 not found page</h1>
+        <h3>Sorry, we didn't find what you want</h3>
+      </div>
     )
   }
 }

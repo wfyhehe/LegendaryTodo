@@ -10,12 +10,12 @@ import axios from '../../axios/index'
 import './style.less'
 import moment from 'moment'
 import {message} from 'antd'
-import {CREATE, HIDDEN, UPDATE} from '../../constants/modalStore';
+import {CREATE, HIDDEN, UPDATE} from '../../constants/modalStore'
 
 const {TextArea} = Input
 const RadioGroup = Radio.Group
 
-@inject('modalStore') @observer
+@inject('modalStore') @inject('todoStore') @observer
 class TodoModal extends React.Component {
   handleOk = (e) => {
     let url = `${backendUrl}/todo/`
@@ -32,6 +32,7 @@ class TodoModal extends React.Component {
         this.props.modalStore.setType(HIDDEN)
         message.success('添加成功!')
         this.getTodos()
+        // this.props.getTodos()
       }).catch(error => {
       })
     } else if (this.props.modalStore.modalType === UPDATE) { //  update
@@ -47,6 +48,7 @@ class TodoModal extends React.Component {
       }).then(response => {
         this.props.modalStore.setType(HIDDEN)
         message.success('修改成功!')
+        // this.props.getTodos()
         this.getTodos()
       }).catch(error => {
       })
@@ -102,6 +104,18 @@ class TodoModal extends React.Component {
         </div>
       </Modal>
     )
+  }
+
+  getTodos() {
+    const url = `${backendUrl}/todo/`
+    axios.get(url, {
+      params: {
+        ordering: '-create_datetime'
+      }
+    }).then(response => {
+      this.props.todoStore.fillTodos(response.data)
+    }).catch(err => {
+    })
   }
 }
 

@@ -25,6 +25,9 @@ class TodoViewSet(ModelViewSet):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
 
+    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+    ordering_fields = ('create_datetime', 'urgency', 'expire_datetime')
+
     def create(self, request, *args, **kwargs):
         request.data['id'] = uuid.uuid1().get_hex()
         request.data['create_datetime'] = datetime.now()

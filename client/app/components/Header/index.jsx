@@ -1,31 +1,70 @@
 import React from 'react'
 import {inject, observer} from 'mobx-react'
-import {Button, Select} from 'antd'
+import {Button, Checkbox, Input, Select} from 'antd'
 import './style.less'
-import {ALL, COMPLETED, EXPIRED, INCOMPLETE} from '../../constants/viewStore'
+import {
+  COMPLETED, CREATE_DATETIME, EXPIRE_DATETIME, EXPIRED, INCOMPLETE, TODAY,
+  URGENCY
+} from '../../constants/todoStore'
+import moment from 'moment';
 
 const Option = Select.Option
+const Search = Input.Search
 
-@inject('viewStore') @observer
+@inject('todoStore') @observer
 class Header extends React.Component {
+  onCheckboxChange = (e) => {
+    if (e.target.checked) {
+      this.props.todoStore.addFilter(e.target.value)
+    } else {
+      this.props.todoStore.removeFilter(e.target.value)
+    }
+  }
+
+  onSearchChange = (e) => {
+    this.props.todoStore.onChangeSearch(e.target.value)
+  }
 
   render() {
-    const {viewStore} = this.props
-
+    const {todoStore} = this.props
     return (
       <div id="header">
         {
-          viewStore.showToday ?
-            <Button type="primary" onClick={viewStore.onShowToday}>查看全部</Button> :
-            <Button type="primary" onClick={viewStore.onShowToday}>只看今天</Button>
+          todoStore.hasFilter(TODAY) ?
+            <Button type="primary" onClick={todoStore.removeFilter.bind(this, TODAY)}>查看全部</Button> :
+            <Button type="primary" onClick={todoStore.addFilter.bind(this, TODAY)}>只看今天</Button>
         }
-        <Select className="category" defaultValue={ALL} style={{width: 120}} onChange={viewStore.onTodoCategory}>
-          <Option value={ALL}>全部</Option>
-          <Option value={INCOMPLETE}>未完成</Option>
-          <Option value={COMPLETED}>已完成</Option>
-          <Option value={EXPIRED}>已过期</Option>
+        <span className="my-checkbox">
+          <Checkbox
+            value={COMPLETED}
+            checked={todoStore.hasFilter(COMPLETED)}
+            onChange={this.onCheckboxChange.bind(this)}>
+            已完成
+          </Checkbox>
+          <Checkbox
+            value={INCOMPLETE}
+            checked={todoStore.hasFilter(INCOMPLETE)}
+            onChange={this.onCheckboxChange.bind(this)}>
+            未完成
+          </Checkbox>
+        </span>
+        <span>排序规则：</span>
+        <Select
+          className="order"
+          defaultValue={EXPIRE_DATETIME}
+          style={{width: 120}}
+          onChange={todoStore.setOrder.bind(this)}>
+          <Option value={EXPIRE_DATETIME}>截止时间</Option>
+          <Option value={URGENCY}>紧急程度</Option>
+          <Option value={CREATE_DATETIME}>创建时间</Option>
         </Select>
-
+        <Input
+          placeholder="搜索"
+          className="search"
+          style={{width: 200}}
+          value={todoStore.search}
+          onChange={this.onSearchChange.bind(this)}
+        />
       </div>
     )
   }
